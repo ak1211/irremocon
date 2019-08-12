@@ -18,6 +18,7 @@
 use irremocon::lib::InfraredCodes;
 use rppal::pwm::{Channel, Polarity, Pwm};
 use std::error::Error;
+use std::thread;
 use std::time::Duration;
 use timerfd::{SetTimeFlags, TimerFd, TimerState};
 
@@ -91,12 +92,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         }
         buffer.clear();
         // 送信間隔をあける
-        let mut timerfd = TimerFd::new()?;
-        timerfd.set_state(
-            TimerState::Oneshot(Duration::from_millis(1)),
-            SetTimeFlags::Default,
-        );
-        timerfd.read(); // タイマー待ち
+        thread::sleep(Duration::from_millis(1));
     }
 
     Ok(())
