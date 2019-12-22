@@ -31,9 +31,9 @@ pub mod lib {
             }
         }
         ///
-        pub fn from_hexdump(hexdump: &str) -> Result<InfraredCodes, Box<error::Error>> {
+        pub fn from_hexdump(hexdump: &str) -> Result<InfraredCodes, Box<dyn error::Error>> {
             /// 4文字から16ビットuintへ
-            fn to_u16(cs: &[u8]) -> Result<u16, Box<error::Error>> {
+            fn to_u16(cs: &[u8]) -> Result<u16, Box<dyn error::Error>> {
                 if cs.len() == 4 {
                     let s = String::from_utf8(vec![cs[2], cs[3], cs[0], cs[1]])?;
                     Ok(u16::from_str_radix(&s, 16)?)
@@ -46,7 +46,7 @@ pub mod lib {
                 .as_bytes()
                 .chunks(4)
                 .map(|a| to_u16(&a))
-                .collect::<Result<Vec<u16>, Box<error::Error>>>()
+                .collect::<Result<Vec<u16>, Box<dyn error::Error>>>()
                 .map(|a| InfraredCodes { 0: a })
         }
         ///

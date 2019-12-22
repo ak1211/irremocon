@@ -50,27 +50,21 @@ fn transmit_ir_codes(ircodes: InfraredCodes) -> Result<(), Box<dyn Error>> {
     let mut timerfd = TimerFd::new()?;
     // リモコン信号出力
     for onoff in ircodes.to_micro_seconds().chunks(2) {
-        let lag = 10; // 10マイクロ秒は制御遅れの補正(実測)
-        let t_on = onoff[0].saturating_sub(lag);
-        let t_off = onoff[1].saturating_sub(lag);
-        //
-        if t_on > 0 {
-            timerfd.set_state(
-                TimerState::Oneshot(Duration::from_micros(t_on as u64)),
-                SetTimeFlags::Default,
-            );
-            pwm.enable()?;
-            timerfd.read(); // タイマー待ち
-        }
-        //
-        if t_off > 0 {
-            timerfd.set_state(
-                TimerState::Oneshot(Duration::from_micros(t_off as u64)),
-                SetTimeFlags::Default,
-            );
-            pwm.disable()?;
-            timerfd.read(); // タイマー待ち
-        }
+        let t_on = onoff[0];
+        let t_off = onoff[1];
+        timerfd.set_state(
+            TimerState::Oneshot(Duration::from_micros(t_on as u64)),
+            SetTimeFlags::Default,
+        );
+        pwm.enable()?;
+        timerfd.read(); // タイマー待ち
+                        //
+        timerfd.set_state(
+            TimerState::Oneshot(Duration::from_micros(t_off as u64)),
+            SetTimeFlags::Default,
+        );
+        pwm.disable()?;
+        timerfd.read(); // タイマー待ち
     }
 
     Ok(())

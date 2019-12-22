@@ -1,6 +1,6 @@
 [package]
 name = "irremocon"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Akihiro YAMAMOTO <ak1211@mail.ak1211.com>"]
 edition = "2018"
 
