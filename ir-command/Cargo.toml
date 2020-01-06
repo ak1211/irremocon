@@ -11,8 +11,8 @@ name = "irrec"
 path = "src/irrec/main.rs"
 
 [[bin]]
-name = "irsend"
-path = "src/irsend/main.rs"
+name = "irtransmit"
+path = "src/irtransmit/main.rs"
 
 [dependencies]
 nix = "0.14.1"

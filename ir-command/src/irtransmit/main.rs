@@ -74,7 +74,7 @@ fn transmit_ir_codes(ircodes: InfraredCodes) -> Result<(), Box<dyn Error>> {
 ///
 ///
 fn main() -> Result<(), Box<dyn Error>> {
-    eprintln!("irsend v{}", env!("CARGO_PKG_VERSION"));
+    eprintln!("irtransmit v{}", env!("CARGO_PKG_VERSION"));
 
     let mut buffer = String::new();
     // EndOfFileまで繰り返す
