@@ -15,7 +15,7 @@
  limitations under the License.
 */
 
-use irremocon::lib::InfraredCodes;
+use irremocon::infrared_codes::{InfraredCodes};
 use rppal::pwm::{Channel, Polarity, Pwm};
 use std::error::Error;
 use std::thread;

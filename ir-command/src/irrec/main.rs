@@ -16,7 +16,7 @@
 */
 
 use getch::Getch;
-use irremocon::lib::InfraredCodes;
+use irremocon::infrared_codes::{InfraredCodes};
 use rppal::gpio::{Gpio, Level};
 use std::error::Error;
 use std::thread;
