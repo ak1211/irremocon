@@ -15,9 +15,7 @@
  limitations under the License.
 */
 
-///
-///
-///
 pub mod infrared_codes;
 pub mod receive_codes;
 pub mod transmit_codes;
+

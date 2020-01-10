@@ -6,6 +6,12 @@ edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[dependencies]
+nix = "0.14.1"
+timerfd = "1.0.0"
+getch = "0.2.1"
+rppal = "0.11.3"
+
 [[bin]]
 name = "irrec"
 path = "src/irrec/main.rs"
@@ -14,8 +20,3 @@ path = "src/irrec/main.rs"
 name = "irtransmit"
 path = "src/irtransmit/main.rs"
 
-[dependencies]
-nix = "0.14.1"
-timerfd = "1.0.0"
-getch = "0.2.1"
-rppal = "0.11.3"

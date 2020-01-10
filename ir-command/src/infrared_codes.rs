@@ -15,9 +15,6 @@
  limitations under the License.
 */
 
-///
-///
-///
 use std::error;
 
 pub struct InfraredCodes(Vec<u16>);
